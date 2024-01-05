@@ -1,5 +1,5 @@
 {
-  "name": "slideshow-zoom-with-text-animation",
+  "name": "@jwmsoftware/slideshow-zoom-with-text-animation",
   "version": "1.0.0",
   "description": "Vue3 component to transition images zooming in and out with typewriter text animation",
   "main": "index.js",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jwmsoftware/slideshow-zoom-with-text-animation/issues"
   },
-  "homepage": "https://github.com/jwmsoftware/slideshow-zoom-with-text-animation#readme"
+  "homepage": "https://github.com/jwmsoftware/slideshow-zoom-with-text-animation#readme",
+  "publishConfig": {
+    "@jwmsoftware:registry": "https://npm.pkg.github.com"
+  }
 }
