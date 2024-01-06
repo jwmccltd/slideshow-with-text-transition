@@ -1,22 +1,28 @@
 {
-  "name": "@jwmsoftware/slideshow-zoom-with-text-animation",
+  "name": "slideshow-zoom-with-text-animation",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/slideshow-zoom-with-text-animation.umd.js",
+  "module": "./dist/slideshow-zoom-with-text-animation.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/slideshow-zoom-with-text-animation.es.js",
+      "require": "./dist/slideshow-zoom-with-text-animation.umd.js"
+    }
+  },
   "version": "1.0.0",
-  "description": "Vue3 component to transition images zooming in and out with typewriter text animation",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "exit 0"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jwmsoftware/slideshow-zoom-with-text-animation.git"
+  "dependencies": {
+    "vue": "^3.3.11"
   },
-  "author": "James Myhill",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jwmsoftware/slideshow-zoom-with-text-animation/issues"
-  },
-  "homepage": "https://github.com/jwmsoftware/slideshow-zoom-with-text-animation#readme",
-  "publishConfig": {
-    "@jwmsoftware:registry": "https://npm.pkg.github.com"
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "vite": "^5.0.11"
   }
 }
