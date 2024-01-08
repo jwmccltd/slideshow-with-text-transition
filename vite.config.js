@@ -1,12 +1,12 @@
-const path = require('path')
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
-    lib: {  
-      entry: path.resolve(__dirname, "src/index.js"),
+    lib: {
+      entry: resolve(__dirname, 'src/index.ts'),
       name: "slideshow-zoom-with-text-animation",
       fileName: (format) => `${format}.js`,
     },
