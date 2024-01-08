@@ -3,15 +3,15 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/slideshow-zoom-with-text-animation.umd.js",
-  "module": "./dist/slideshow-zoom-with-text-animation.es.js",
+  "main": "./dist/umd.js",
+  "module": "./dist/es.js",
   "exports": {
     ".": {
-      "import": "./dist/slideshow-zoom-with-text-animation.es.js",
-      "require": "./dist/slideshow-zoom-with-text-animation.umd.js"
+      "import": "./dist/es.js",
+      "require": "./dist/umd.js"
     }
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
