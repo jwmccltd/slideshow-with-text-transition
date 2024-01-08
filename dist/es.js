@@ -1,8 +1,8 @@
 import { openBlock as i, createElementBlock as n, createElementVNode as l, Fragment as _, renderList as g, normalizeClass as r, toDisplayString as p, createCommentVNode as h, useCssVars as x } from "vue";
-const y = (t, e) => {
+const y = (t, s) => {
   const o = t.__vccOpts || t;
-  for (const [c, s] of e)
-    o[c] = s;
+  for (const [c, e] of s)
+    o[c] = e;
   return o;
 }, d = {
   props: {
@@ -111,8 +111,8 @@ const y = (t, e) => {
      * @param string text
      */
     setTypingStyle(t) {
-      let e = [3, 2, 1];
-      this.typingSpeed == "fast" && (e = [2, 1, 0.5]), this.typingSpeed == "slow" && (e = [4, 3, 2]), this.textAnimation = "jwm-slides_typing " + e[0] + "s steps(30, end)", t.length < 30 && (this.textAnimation = "jwm-slides_typing " + e[1] + "s steps(20, end)"), t.length < 10 && (this.textAnimation = "jwm-slides_typing " + e[2] + "s steps(10, end)");
+      let s = [3, 2, 1];
+      this.typingSpeed == "fast" && (s = [2, 1, 0.5]), this.typingSpeed == "slow" && (s = [4, 3, 2]), this.textAnimation = "jwm-slides_typing " + s[0] + "s steps(30, end)", t.length < 30 && (this.textAnimation = "jwm-slides_typing " + s[1] + "s steps(20, end)"), t.length < 10 && (this.textAnimation = "jwm-slides_typing " + s[2] + "s steps(10, end)");
     },
     /**
      * Load the text
@@ -125,12 +125,12 @@ const y = (t, e) => {
       setTimeout(() => {
         this.text[t].active = !0, this.setTypingStyle(this.text[t].text), t++;
       }, 50);
-      let e = setInterval(() => {
+      let s = setInterval(() => {
         typeof this.text[t] < "u" && (this.text[t].active = !0, this.setTypingStyle(this.text[t].text)), typeof this.text[t + 1] > "u" && (setTimeout(() => {
           this.showBtn = !0, setTimeout(() => {
             this.toggleActionBtn = !0;
           }, 50);
-        }, 500), clearInterval(e)), t++;
+        }, 500), clearInterval(s)), t++;
       }, this.switchTextLine);
     }
   }
@@ -142,12 +142,12 @@ const y = (t, e) => {
     "2e39ccde": t.textAnimation
   }));
 }, m = d.setup;
-d.setup = m ? (t, e) => (u(), m(t, e)) : u;
+d.setup = m ? (t, s) => (u(), m(t, s)) : u;
 const b = { class: "jwm-slides_outer" }, v = { class: "jwm-slides_text-holder" }, w = { class: "jwm-slides_text" }, S = ["href", "target"], A = ["id"], T = { class: "jwm-slides_image-holder" }, j = { key: 0 }, B = ["src"];
-function D(t, e, o, c, s, F) {
+function D(t, s, o, c, e, k) {
   return i(), n("div", b, [
     l("div", v, [
-      (i(!0), n(_, null, g(s.text, (a, f) => (i(), n("div", { key: f }, [
+      (i(!0), n(_, null, g(e.text, (a, f) => (i(), n("div", { key: f }, [
         a.active == !0 ? (i(), n("div", {
           key: 0,
           class: r(["jwm-slides_text-animate", { active: a.active == !0 }])
@@ -155,34 +155,30 @@ function D(t, e, o, c, s, F) {
           l("h1", w, p(a.text), 1)
         ], 2)) : h("", !0)
       ]))), 128)),
-      s.btnText.length > 0 ? (i(), n("a", {
+      e.btnText.length > 0 ? (i(), n("a", {
         key: 0,
-        href: s.btnAction.link,
-        target: s.btnAction.target ?? "_self",
+        href: e.btnAction.link,
+        target: e.btnAction.target ?? "_self",
         class: "jwm-slides_btn_anchor"
       }, [
         l("button", {
-          class: r(["jwm-slides_button", { toggle: s.toggleActionBtn == !0, show: s.showBtn == !0 }]),
+          class: r(["jwm-slides_button", { toggle: e.toggleActionBtn == !0, show: e.showBtn == !0 }]),
           ref: "jwm-slide_button",
-          id: "jwm-slide_button_id_" + s.pos
-        }, p(s.btnText), 11, A)
+          id: "jwm-slide_button_id_" + e.pos
+        }, p(e.btnText), 11, A)
       ], 8, S)) : h("", !0)
     ]),
     l("div", T, [
-      s.slideFile != "" ? (i(), n("div", j, [
+      e.slideFile != "" ? (i(), n("div", j, [
         l("img", {
-          class: r(["jwm-slides_zoom", { active: s.active == !0 }]),
-          src: s.slideFile
+          class: r(["jwm-slides_zoom", { active: e.active == !0 }]),
+          src: e.slideFile
         }, null, 10, B)
       ])) : h("", !0)
     ])
   ]);
 }
-const k = /* @__PURE__ */ y(d, [["render", D]]), z = {
-  install: (t, e) => {
-    t.component("Slides", k);
-  }
-};
+const N = /* @__PURE__ */ y(d, [["render", D]]);
 export {
-  z as default
+  N as Slides
 };
