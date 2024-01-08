@@ -247,7 +247,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
 /* Text colour for slide text */
 .jwm-slides_text {

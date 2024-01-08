@@ -15,7 +15,7 @@ export default defineConfig({
       output: { 
         globals: {
           vue: "Vue",
-	},	
+	  },	
       },	      
     }	     
   },	  
