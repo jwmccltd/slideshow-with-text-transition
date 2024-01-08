@@ -9,9 +9,10 @@
     ".": {
       "import": "./dist/es.js",
       "require": "./dist/umd.js"
-    }
+    },
+    "./dist/style.css": "./dist/style.css"
   },
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
