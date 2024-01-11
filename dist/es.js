@@ -1,8 +1,8 @@
-import { openBlock as i, createElementBlock as n, createElementVNode as l, Fragment as _, renderList as g, normalizeClass as r, toDisplayString as p, createCommentVNode as h, useCssVars as x } from "vue";
+import { openBlock as i, createElementBlock as n, createElementVNode as l, Fragment as _, renderList as g, normalizeClass as r, toDisplayString as c, createCommentVNode as h, useCssVars as x } from "vue";
 const y = (t, s) => {
   const o = t.__vccOpts || t;
-  for (const [c, e] of s)
-    o[c] = e;
+  for (const [p, e] of s)
+    o[p] = e;
   return o;
 }, d = {
   props: {
@@ -136,15 +136,15 @@ const y = (t, s) => {
   }
 }, u = () => {
   x((t) => ({
-    "5ce2b28d": t.zoomDuration,
-    fc8b221e: t.zoomScale,
-    "60ecdaa8": t.imageHolderHeight,
-    "2e39ccde": t.textAnimation
+    "639241e7": t.zoomDuration,
+    e2baa452: t.zoomScale,
+    "639a58e4": t.imageHolderHeight,
+    "8fb51512": t.textAnimation
   }));
 }, m = d.setup;
 d.setup = m ? (t, s) => (u(), m(t, s)) : u;
 const b = { class: "jwm-slides_outer" }, v = { class: "jwm-slides_text-holder" }, w = { class: "jwm-slides_text" }, S = ["href", "target"], A = ["id"], T = { class: "jwm-slides_image-holder" }, j = { key: 0 }, B = ["src"];
-function D(t, s, o, c, e, k) {
+function D(t, s, o, p, e, k) {
   return i(), n("div", b, [
     l("div", v, [
       (i(!0), n(_, null, g(e.text, (a, f) => (i(), n("div", { key: f }, [
@@ -152,7 +152,7 @@ function D(t, s, o, c, e, k) {
           key: 0,
           class: r(["jwm-slides_text-animate", { active: a.active == !0 }])
         }, [
-          l("h1", w, p(a.text), 1)
+          l("h1", w, c(a.text), 1)
         ], 2)) : h("", !0)
       ]))), 128)),
       e.btnText.length > 0 ? (i(), n("a", {
@@ -165,7 +165,7 @@ function D(t, s, o, c, e, k) {
           class: r(["jwm-slides_button", { toggle: e.toggleActionBtn == !0, show: e.showBtn == !0 }]),
           ref: "jwm-slide_button",
           id: "jwm-slide_button_id_" + e.pos
-        }, p(e.btnText), 11, A)
+        }, c(e.btnText), 11, A)
       ], 8, S)) : h("", !0)
     ]),
     l("div", T, [

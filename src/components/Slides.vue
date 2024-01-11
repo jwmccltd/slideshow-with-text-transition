@@ -268,6 +268,7 @@ export default {
 /* Holders for images and outer holder */
 .jwm-slides_image-holder, .jwm-slides_outer {
     max-height: v-bind('imageHolderHeight'); 
+    height: v-bind('imageHolderHeight');	
     overflow: hidden;
     display: flex;
     justify-content: center;
