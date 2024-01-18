@@ -82,6 +82,17 @@ export default {
         for (let a of JSON.parse(this.displayData)) {
             this.btnActions.push(a.btn_action);
         }
+
+        //Load text colour
+        for (let c of JSON.parse(this.displayData)) {
+            let col = c.colours;
+            if (typeof c.colours == 'undefined') {
+                col = null;
+            }
+ 
+            this.textColours.push(col);
+        }
+
     },
 
     mounted() {
@@ -133,10 +144,14 @@ export default {
             images: [], //Array for image paths
             texts: [], //Array for text
             btnLabels: [], //Array for button label
-            btnActions: [], //Array for button actions
+            btnActions: [], //Array for button actions,
+            textColours: [], //Array for text colours
 
             typeSteps: 0, // Initialise the number of steps for typing animation,
-            textAnimation: 'jwm-slides_typing 3s steps(30, end)', //Default for typing animation
+            textAnimation: 'jwm-slides_typing 3s steps(30, end)', //Default for typing animation,
+            textColour: 'white', //Text colour
+            buttonBorder: '2px solid white', //Button border initialise,
+            buttonHoverTextColour: 'white', //Colour to show on hover (button colour will use initial text colour)
 
             toggleActionBtn: false, //Set to false. Set to true to fade in action button
             showBtn: false, //Additional control to show/hide button, used to hide glitchy behaviour of transition when hiding button,
@@ -196,6 +211,10 @@ export default {
          */
         loadText() {
 
+            this.textColour = this.textColours[this.pos] == null ? 'white' : this.textColours[this.pos].text_colour;
+            this.buttonBorder = '2px solid '+this.textColour;
+            this.buttonHoverTextColour = this.textColours[this.pos] == null ? 'black' : this.textColours[this.pos].hover_text_colour;
+
             this.text = [];
 
             //Loop the n number of text in the array. Each item will show as a typing animation on a new line
@@ -251,7 +270,7 @@ export default {
 
 /* Text colour for slide text */
 .jwm-slides_text {
-    color: white;
+    color: v-bind('textColour');
 }
 
 /* Transition for zooming image in and out, with bound duration */
@@ -309,19 +328,19 @@ a.jwm-slides_btn_anchor {
 
 /* Styling for action button */
 .jwm-slides_button {
-  background-color: transparent;
-  color: white;
-  border: 2px solid #e7e7e7;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 0 auto;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  display: none;
-  margin-top: .5em;
-  opacity: 0;
+    background-color: transparent;
+    color: v-bind('textColour');
+    border: v-bind('buttonBorder');
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    display: none;
+    margin-top: .5em;
+    opacity: 0;
 }
 
 /* Make button visible in DOM */
@@ -337,8 +356,8 @@ a.jwm-slides_btn_anchor {
 
 /* Transition on button hover */
 .jwm-slides_button:hover {
-    background-color: white;
-    color: black;
+    background-color: v-bind('textColour');
+    color: v-bind('buttonHoverTextColour');
 }
 
 </style>

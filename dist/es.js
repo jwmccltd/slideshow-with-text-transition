@@ -1,9 +1,9 @@
-import { openBlock as i, createElementBlock as n, createElementVNode as l, Fragment as _, renderList as g, normalizeClass as r, toDisplayString as p, createCommentVNode as h, useCssVars as x } from "vue";
-const y = (t, s) => {
-  const o = t.__vccOpts || t;
-  for (const [c, e] of s)
-    o[c] = e;
-  return o;
+import { openBlock as i, createElementBlock as o, createElementVNode as l, Fragment as _, renderList as x, normalizeClass as a, toDisplayString as p, createCommentVNode as h, useCssVars as g } from "vue";
+const b = (t, e) => {
+  const n = t.__vccOpts || t;
+  for (const [u, s] of e)
+    n[u] = s;
+  return n;
 }, d = {
   props: {
     /* JSON encoded array containing paths for slides, text, btns and action */
@@ -48,6 +48,10 @@ const y = (t, s) => {
       this.btnLabels.push(t.btn_text);
     for (let t of JSON.parse(this.displayData))
       this.btnActions.push(t.btn_action);
+    for (let t of JSON.parse(this.displayData)) {
+      let e = t.colours;
+      typeof t.colours > "u" && (e = null), this.textColours.push(e);
+    }
   },
   mounted() {
     this.zoomDuration = "transform " + this.duration + "s";
@@ -77,11 +81,19 @@ const y = (t, s) => {
       btnLabels: [],
       //Array for button label
       btnActions: [],
-      //Array for button actions
+      //Array for button actions,
+      textColours: [],
+      //Array for text colours
       typeSteps: 0,
       // Initialise the number of steps for typing animation,
       textAnimation: "jwm-slides_typing 3s steps(30, end)",
-      //Default for typing animation
+      //Default for typing animation,
+      textColour: "white",
+      //Text colour
+      buttonBorder: "2px solid white",
+      //Button border initialise,
+      buttonHoverTextColour: "white",
+      //Colour to show on hover (button colour will use initial text colour)
       toggleActionBtn: !1,
       //Set to false. Set to true to fade in action button
       showBtn: !1,
@@ -111,74 +123,77 @@ const y = (t, s) => {
      * @param string text
      */
     setTypingStyle(t) {
-      let s = [3, 2, 1];
-      this.typingSpeed == "fast" && (s = [2, 1, 0.5]), this.typingSpeed == "slow" && (s = [4, 3, 2]), this.textAnimation = "jwm-slides_typing " + s[0] + "s steps(30, end)", t.length < 30 && (this.textAnimation = "jwm-slides_typing " + s[1] + "s steps(20, end)"), t.length < 10 && (this.textAnimation = "jwm-slides_typing " + s[2] + "s steps(10, end)");
+      let e = [3, 2, 1];
+      this.typingSpeed == "fast" && (e = [2, 1, 0.5]), this.typingSpeed == "slow" && (e = [4, 3, 2]), this.textAnimation = "jwm-slides_typing " + e[0] + "s steps(30, end)", t.length < 30 && (this.textAnimation = "jwm-slides_typing " + e[1] + "s steps(20, end)"), t.length < 10 && (this.textAnimation = "jwm-slides_typing " + e[2] + "s steps(10, end)");
     },
     /**
      * Load the text
      */
     loadText() {
-      this.text = [];
-      for (let o of this.texts[this.pos])
-        this.text.push({ text: o, active: !1 });
+      this.textColour = this.textColours[this.pos] == null ? "white" : this.textColours[this.pos].text_colour, this.buttonBorder = "2px solid " + this.textColour, this.buttonHoverTextColour = this.textColours[this.pos] == null ? "black" : this.textColours[this.pos].hover_text_colour, this.text = [];
+      for (let n of this.texts[this.pos])
+        this.text.push({ text: n, active: !1 });
       let t = 0;
       setTimeout(() => {
         this.text[t].active = !0, this.setTypingStyle(this.text[t].text), t++;
       }, 50);
-      let s = setInterval(() => {
+      let e = setInterval(() => {
         typeof this.text[t] < "u" && (this.text[t].active = !0, this.setTypingStyle(this.text[t].text)), typeof this.text[t + 1] > "u" && (setTimeout(() => {
           this.showBtn = !0, setTimeout(() => {
             this.toggleActionBtn = !0;
           }, 50);
-        }, 500), clearInterval(s)), t++;
+        }, 500), clearInterval(e)), t++;
       }, this.switchTextLine);
     }
   }
-}, u = () => {
-  x((t) => ({
-    ecde235e: t.zoomDuration,
-    "38f12ca6": t.zoomScale,
-    "253d4d38": t.imageHolderHeight,
-    "51fc564d": t.textAnimation
+}, c = () => {
+  g((t) => ({
+    "721a3158": t.textColour,
+    "418de47c": t.zoomDuration,
+    "0abbe7dc": t.zoomScale,
+    f06f8eda: t.imageHolderHeight,
+    "9d4fb608": t.textAnimation,
+    "269e9539": t.buttonBorder,
+    "088abd70": t.buttonHoverTextColour
   }));
-}, m = d.setup;
-d.setup = m ? (t, s) => (u(), m(t, s)) : u;
-const b = { class: "jwm-slides_outer" }, v = { class: "jwm-slides_text-holder" }, w = { class: "jwm-slides_text" }, S = ["href", "target"], A = ["id"], T = { class: "jwm-slides_image-holder" }, j = { key: 0 }, B = ["src"];
-function D(t, s, o, c, e, k) {
-  return i(), n("div", b, [
+}, f = d.setup;
+d.setup = f ? (t, e) => (c(), f(t, e)) : c;
+const y = { class: "jwm-slides_outer" }, v = { class: "jwm-slides_text-holder" }, w = { class: "jwm-slides_text" }, S = ["href", "target"], T = ["id"], C = { class: "jwm-slides_image-holder" }, A = { key: 0 }, j = ["src"];
+function B(t, e, n, u, s, D) {
+  return i(), o("div", y, [
     l("div", v, [
-      (i(!0), n(_, null, g(e.text, (a, f) => (i(), n("div", { key: f }, [
-        a.active == !0 ? (i(), n("div", {
+      (i(!0), o(_, null, x(s.text, (r, m) => (i(), o("div", { key: m }, [
+        r.active == !0 ? (i(), o("div", {
           key: 0,
-          class: r(["jwm-slides_text-animate", { active: a.active == !0 }])
+          class: a(["jwm-slides_text-animate", { active: r.active == !0 }])
         }, [
-          l("h1", w, p(a.text), 1)
+          l("h1", w, p(r.text), 1)
         ], 2)) : h("", !0)
       ]))), 128)),
-      e.btnText.length > 0 ? (i(), n("a", {
+      s.btnText.length > 0 ? (i(), o("a", {
         key: 0,
-        href: e.btnAction.link,
-        target: e.btnAction.target ?? "_self",
+        href: s.btnAction.link,
+        target: s.btnAction.target ?? "_self",
         class: "jwm-slides_btn_anchor"
       }, [
         l("button", {
-          class: r(["jwm-slides_button", { toggle: e.toggleActionBtn == !0, show: e.showBtn == !0 }]),
+          class: a(["jwm-slides_button", { toggle: s.toggleActionBtn == !0, show: s.showBtn == !0 }]),
           ref: "jwm-slide_button",
-          id: "jwm-slide_button_id_" + e.pos
-        }, p(e.btnText), 11, A)
+          id: "jwm-slide_button_id_" + s.pos
+        }, p(s.btnText), 11, T)
       ], 8, S)) : h("", !0)
     ]),
-    l("div", T, [
-      e.slideFile != "" ? (i(), n("div", j, [
+    l("div", C, [
+      s.slideFile != "" ? (i(), o("div", A, [
         l("img", {
-          class: r(["jwm-slides_zoom", { active: e.active == !0 }]),
-          src: e.slideFile
-        }, null, 10, B)
+          class: a(["jwm-slides_zoom", { active: s.active == !0 }]),
+          src: s.slideFile
+        }, null, 10, j)
       ])) : h("", !0)
     ])
   ]);
 }
-const N = /* @__PURE__ */ y(d, [["render", D]]);
+const N = /* @__PURE__ */ b(d, [["render", B]]);
 export {
   N as Slides
 };
