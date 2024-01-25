@@ -8,13 +8,13 @@ npm i @jwmsoftware/slideshow-with-text-transition
 
 # Register
 
-import { Slides } from '@jwmsoftware/slideshow-with-text-transition';
-import '@jwmsoftware/slideshow-with-text-transition/dist/style.css';
+`import { Slides } from '@jwmsoftware/slideshow-with-text-transition';`<br>
+`import '@jwmsoftware/slideshow-with-text-transition/dist/style.css';`<br>
 
 # Usage
 
 Pass json encoded array to component, containing accessible path to image e.g<br><br>
-Add text to go on animated typing text over image<br>
+Add text to add animated typing overlay on image<br>
 Add btn text for action button<br>
 Add link for button and target<br>
 define text colour and hover text colour<br><br>
