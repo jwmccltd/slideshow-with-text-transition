@@ -13,7 +13,7 @@ npm i @jwmsoftware/slideshow-with-text-transition
 
 # Usage
 
-Pass json encoded array to component, containing accessible path to image e.g<br><br>
+Pass json of options to component, containing accessible path to image e.g<br><br>
 Add text to add animated typing overlay on image<br>
 Add btn text for action button<br>
 Add link for button and target<br>
