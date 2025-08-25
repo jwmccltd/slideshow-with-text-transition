@@ -19,9 +19,24 @@ Add btn text for action button<br>
 Add link for button and target<br>
 define text colour and hover text colour<br><br>
 
-`$displayData = [];`<br>
-
-`$displayData[] = ['slide' => 'images/slide-folder/slides/slide-1.jpg', 'text' => ['Line 1', 'Line 2'], 'btn_text' => 'My Button', 'btn_action' => ['link' => 'https://www.google.co.uk', 'target' => '_blank'], 'colours' => ['text_colour' => 'black', 'hover_text_colour' => 'white']];`
+`[
+  {
+    "slide": "images/slide-folder/slides/slide-1.jpg",
+    "text": [
+      "Line 1",
+      "Line 2"
+    ],
+    "btn_text": "My Button",
+    "btn_action": {
+      "link": "https://www.google.co.uk",
+      "target": "_blank"
+    },
+    "colours": {
+      "text_colour": "black",
+      "hover_text_colour": "white"
+    }
+  }
+]`
 
 <br>
 
