@@ -1,5 +1,5 @@
 {
-  "name": "@jwmsoftware/slideshow-with-text-transition",
+  "name": "@jwmccltd/slideshow-with-text-transition",
   "files": [
     "dist"
   ],
@@ -12,7 +12,7 @@
     },
     "./dist/style.css": "./dist/style.css"
   },
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "scripts": {
     "dev": "vite",

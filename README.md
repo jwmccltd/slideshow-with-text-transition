@@ -4,12 +4,36 @@ A Vue 3 component that displays a slideshow and animated text.
 
 # Install
 
-npm i @jwmsoftware/slideshow-with-text-transition
+npm install @jwmccltd/slideshow-with-text-transition
 
-# Register
+# Import and use
 
-`import { Slides } from '@jwmsoftware/slideshow-with-text-transition';`<br>
-`import '@jwmsoftware/slideshow-with-text-transition/dist/style.css';`<br>
+In your Vue app, import the component and its stylesheet:
+
+```js
+import { Slides } from '@jwmccltd/slideshow-with-text-transition';
+import '@jwmccltd/slideshow-with-text-transition/dist/style.css';
+```
+
+Register it locally in a component and pass `display-data` as a JSON string:
+
+```vue
+<script setup>
+import { Slides } from '@jwmccltd/slideshow-with-text-transition';
+import '@jwmccltd/slideshow-with-text-transition/dist/style.css';
+
+const slides = [
+  {
+    slide: '/images/slide-1.jpg',
+    text: ['Line 1', 'Line 2'],
+  },
+];
+</script>
+
+<template>
+  <Slides :display-data="JSON.stringify(slides)" />
+</template>
+```
 
 # Usage
 
